@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Glamour | Josselyn Martínez - Lashista</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-cream: #FFF8E1;        /* Fondo principal solicitado */
+            --card-bg: #FFFFFF;         /* Tarjetas blanco pulcro */
+            --accent-gold: #C59B27;     /* Dorado elegante */
+            --accent-gold-light: #F7E7B4;
+            --rose-accent: #D48C95;     /* Rosado estética */
+            --text-primary: #2C221E;    /* Texto principal oscuro legible */
+            --text-secondary: #665A55;  /* Texto secundario */
+            --border-light: #E8DECE;    /* Bordes suaves */
+            --whatsapp: #25d366;
+        }
+
+        /* Prevención estricta de scroll horizontal */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            background-color: var(--bg-cream);
+            color: var(--text-primary);
+            line-height: 1.5;
+            padding-bottom: 80px;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 40px 15px 25px;
+            background: linear-gradient(180deg, #FAF2D8 0%, var(--bg-cream) 100%);
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            letter-spacing: 4px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .artist-badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 20px;
+            border: 1px solid var(--accent-gold);
+            border-radius: 30px;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            font-weight: 600;
+            background: rgba(197, 155, 39, 0.08);
+        }
+
+        /* NAVEGACIÓN DE PÍLDORAS */
+        nav {
+            display: flex;
+            gap: 8px;
+            padding: 12px 10px;
+            background-color: rgba(255, 248, 225, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-light);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            background: var(--accent-gold);
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(197, 155, 39, 0.25);
+        }
+
+        /* CONTENEDOR */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 14px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: var(--text-primary);
+            text-align: center;
+            margin: 25px 0 18px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 45px;
+            height: 2px;
+            background: var(--rose-accent);
+            margin: 6px auto 0;
+        }
+
+        /* TARJETAS DE SERVICIO */
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(74, 58, 42, 0.05);
+        }
+
+        .card-info {
+            padding-right: 10px;
+            flex: 1;
+        }
+
+        .card-info h3 {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .card-info p {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .card-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            background: var(--accent-gold-light);
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(197, 155, 39, 0.3);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .badge-promo {
+            background: var(--rose-accent);
+            color: #FFFFFF;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 7px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        /* CAJA RETOQUES Y POLÍTICAS */
+        .info-card {
+            background: #FFFFFF;
+            border: 1px solid var(--accent-gold);
+            border-radius: 14px;
+            padding: 18px 15px;
+            margin-top: 10px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(197, 155, 39, 0.08);
+        }
+
+        .info-card h3 {
+            color: var(--text-primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card p, .info-card li {
+            font-size: 0.83rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .info-card ul {
+            padding-left: 16px;
+            margin: 8px 0;
+        }
+
+        .alert-box {
+            background: #FFF3F4;
+            border-left: 3px solid var(--rose-accent);
+            padding: 10px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.78rem;
+            margin-top: 10px;
+            color: var(--text-primary);
+        }
+
+        .box-section {
+            background-color: var(--card-bg);
+            border-radius: 14px;
+            padding: 18px 15px;
+            border: 1px solid var(--border-light);
+            margin-bottom: 16px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(74, 58, 42, 0.04);
+        }
+
+        .box-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+        }
+
+        .custom-list {
+            list-style: none;
+        }
+
+        .custom-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            font-size: 0.83rem;
+            color: var(--text-secondary);
+        }
+
+        .custom-list li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.9rem;
+        }
+
+        .policy-list li i { color: var(--rose-accent); }
+        .recom-list li i { color: var(--accent-gold); }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 15px;
+            background-color: #FAF2D8;
+            border-top: 1px solid var(--border-light);
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 280px;
+            margin: 15px auto;
+        }
+
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #FFFFFF;
+            color: var(--text-primary);
+            padding: 10px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            background-color: var(--whatsapp);
+            color: #fff;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            z-index: 1000;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <h1 class="brand-title">GLAMOUR</h1>
+        <div class="artist-badge">Lashista Josselyn Martínez</div>
+    </header>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav>
+        <button class="tab-btn" onclick="scrollToId('pestanas')">Pestañas</button>
+        <button class="tab-btn" onclick="scrollToId('retoques')">Retoques</button>
+        <button class="tab-btn" onclick="scrollToId('cejas')">Cejas</button>
+        <button class="tab-btn" onclick="scrollToId('politicas')">Políticas</button>
+        <button class="tab-btn" onclick="scrollToId('recomendaciones')">Cuidados</button>
+    </nav>
+
+    <div class="container">
+
+        <!-- PESTAÑAS -->
+        <section id="pestanas">
+            <h2 class="section-title">Catálogo de Pestañas</h2>
+            <div class="services-list">
+                
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Lifting de Pestañas</h3>
+                        <p>Rizado natural y nutrición profunda</p>
+                    </div>
+                    <div class="card-price">$5</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Pestañas Clásicas</h3>
+                        <p>Efecto natural 1 a 1</p>
+                    </div>
+                    <div class="card-price">$12</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Efecto Rímel</h3>
+                        <p>Mayor definición y volumen suave</p>
+                    </div>
+                    <div class="card-price">$12</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Híbridas</h3>
+                        <p>Mezcla perfecta de volumen y clásico</p>
+                    </div>
+                    <div class="card-price">$15</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Hawayanas o YY</h3>
+                        <p>Textura y densidad moderna</p>
+                    </div>
+                    <div class="card-price">$17</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Efecto Anime</h3>
+                        <p>Picos definidos y mirada expresiva</p>
+                    </div>
+                    <div class="card-price">$18</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Volumen Griego o 3D</h3>
+                        <p>Efecto denso y uniforme</p>
+                    </div>
+                    <div class="card-price">$20</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Efecto Foxy</h3>
+                        <p>Ojo rasgado y estilizado</p>
+                    </div>
+                    <div class="card-price">$20</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Volumen 4D</h3>
+                        <p>Volumen intenso y tupido</p>
+                    </div>
+                    <div class="card-price">$20</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Volumen 5D</h3>
+                        <p>Máximo volumen y glamour</p>
+                    </div>
+                    <div class="card-price">$22</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <h3>Punto por Punto</h3>
+                        <p>Aplicación tradicional</p>
+                    </div>
+                    <div class="card-price">$5</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RETOQUES -->
+        <section id="retoques" style="margin-top: 25px;">
+            <div class="info-card">
+                <h3><i class="fa-solid fa-rotate" style="color: var(--accent-gold);"></i> ¿Cómo funciona el Retoque?</h3>
+                <p>Tus extensiones duran hasta <strong>4 semanas</strong>, pero para mantenerlas impecables, a los <strong>15 días</strong> recomendamos tu retoque.</p>
+                <ul>
+                    <li>Es normal si a los 15 días notas una caída entre el 20% y 30% (aprox. 6 a 7 pestañas por ojo).</li>
+                </ul>
+                <div class="alert-box">
+                    <strong><i class="fa-solid fa-circle-exclamation" style="color: var(--rose-accent);"></i> Importante:</strong> Si la caída supera el 50%, aplicará como un juego nuevo.
+                </div>
+                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 600; font-size: 0.85rem;">Precio del Retoque (15 días):</span>
+                    <span class="card-price">$7</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CEJAS -->
+        <section id="cejas">
+            <h2 class="section-title">Diseño & Cejas</h2>
+            <div class="services-list">
+                
+                <div class="card">
+                    <div class="card-info">
+                        <span class="badge-promo">Promoción Octubre</span>
+                        <h3>Diseño y Laminado de Cejas</h3>
+                        <p>Perfilado y peinado semipermanente</p>
+                    </div>
+                    <div class="card-price">$5</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <span class="badge-promo">Promoción Octubre</span>
+                        <h3>Pigmentación con Henna</h3>
+                        <p>Sombreado natural temporal</p>
+                    </div>
+                    <div class="card-price">$3</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-info">
+                        <span class="badge-promo">Especial</span>
+                        <h3>Armonización de Cejas</h3>
+                        <p>Incluye aclaración y diseño personalizado</p>
+                    </div>
+                    <div class="card-price">$8</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- POLÍTICAS Y CUIDADOS -->
+        <section id="politicas" style="margin-top: 25px;">
+            <div class="box-section">
+                <h3><i class="fa-solid fa-file-signature" style="color: var(--rose-accent);"></i> Políticas de Cita</h3>
+                <ul class="custom-list policy-list">
+                    <li><i class="fa-solid fa-dollar-sign"></i> Se requiere un <strong>anticipo de $5</strong> para agendar tu cita[span_1](start_span)[span_1](end_span).</li>
+                    <li><i class="fa-solid fa-calendar-xmark"></i> Cancelaciones o inasistencias de último momento solo permiten reagendar una 2da vez; de lo contrario, el anticipo se pierde[span_2](start_span)[span_2](end_span).</li>
+                    <li><i class="fa-solid fa-clock"></i> Cuentas con <strong>15 minutos de tolerancia</strong>[span_3](start_span)[span_3](end_span).</li>
+                    <li><i class="fa-solid fa-user-plus"></i> Puedes asistir con 1 acompañante adulto (sin niños)[span_4](start_span)[span_4](end_span).</li>
+                    <li><i class="fa-solid fa-wallet"></i> Pagos en efectivo o transferencia[span_5](start_span)[span_5](end_span).</li>
+                </ul>
+            </div>
+
+            <div class="box-section" id="recomendaciones">
+                <h3><i class="fa-solid fa-heart-pulse" style="color: var(--accent-gold);"></i> Recomendaciones Previas</h3>
+                <ul class="custom-list recom-list">
+                    <li><i class="fa-solid fa-ban-smoking"></i> No consumir alcohol 24 horas antes de tu cita[span_6](start_span)[span_6](end_span).</li>
+                    <li><i class="fa-solid fa-face-smile-beam"></i> Asistir sin maquillaje en pestañas o cejas (afecta la retención)[span_7](start_span)[span_7](end_span).</li>
+                    <li><i class="fa-solid fa-eye"></i> Retirar lentes de contacto antes de la aplicación[span_8](start_span)[span_8](end_span).</li>
+                    <li><i class="fa-solid fa-mug-hot"></i> No consumir café o energizantes 1 hora antes[span_9](start_span)[span_9](end_span).</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <h3 style="font-family: 'Playfair Display', serif; color: var(--text-primary); font-size: 1.3rem;">GLAMOUR</h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">Atención por Josselyn Martínez[span_10](start_span)[span_10](end_span)</p>
+
+        <div class="contact-buttons">
+            <a href="https://wa.me/593960681450?text=Hola%20Josselyn,%20deseo%20agendar%20una%20cita%20en%20Glamour" target="_blank" class="btn-social">
+                <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp); font-size: 1.1rem;"></i> WhatsApp: 0960681450[span_11](start_span)[span_11](end_span)
+            </a>
+            <a href="https://instagram.com/glamour_centro_estetico" target="_blank" class="btn-social">
+                <i class="fa-brands fa-instagram" style="color: #e1306c; font-size: 1.1rem;"></i> @glamour_centro_estético[span_12](start_span)[span_12](end_span)
+            </a>
+        </div>
+
+        <p style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 20px;">© Glamour Estética</p>
+    </footer>
+
+    <!-- BOTÓN WHATSAPP -->
+    <a href="https://wa.me/593960681450?text=Hola%20Josselyn,%20me%20gustar%C3%ADa%20agendar%20una%20cita" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function scrollToId(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                const navHeight = 60;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = el.getBoundingClientRect().top;
+                const offsetPosition = elementRect - bodyRect - navHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+</body>
+</html>
