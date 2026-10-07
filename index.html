@@ -13,18 +13,17 @@
 
     <style>
         :root {
-            --bg-cream: #FFF8E1;        /* Fondo principal solicitado */
-            --card-bg: #FFFFFF;         /* Tarjetas blanco pulcro */
-            --accent-gold: #C59B27;     /* Dorado elegante */
+            --bg-cream: #FFF8E1;
+            --card-bg: #FFFFFF;
+            --accent-gold: #C59B27;
             --accent-gold-light: #F7E7B4;
-            --rose-accent: #D48C95;     /* Rosado estética */
-            --text-primary: #2C221E;    /* Texto principal oscuro legible */
-            --text-secondary: #665A55;  /* Texto secundario */
-            --border-light: #E8DECE;    /* Bordes suaves */
+            --rose-accent: #D48C95;
+            --text-primary: #2C221E;
+            --text-secondary: #665A55;
+            --border-light: #E8DECE;
             --whatsapp: #25d366;
         }
 
-        /* Prevención estricta de scroll horizontal */
         html, body {
             max-width: 100%;
             overflow-x: hidden;
@@ -72,7 +71,7 @@
             background: rgba(197, 155, 39, 0.08);
         }
 
-        /* NAVEGACIÓN DE PÍLDORAS */
+        /* NAVEGACIÓN */
         nav {
             display: flex;
             gap: 8px;
@@ -130,7 +129,7 @@
             margin: 6px auto 0;
         }
 
-        /* TARJETAS DE SERVICIO */
+        /* TARJETAS INTERACTIVAS DE SERVICIO */
         .services-list {
             display: flex;
             flex-direction: column;
@@ -148,6 +147,15 @@
             align-items: center;
             width: 100%;
             box-shadow: 0 4px 12px rgba(74, 58, 42, 0.05);
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 6px rgba(74, 58, 42, 0.1);
         }
 
         .card-info {
@@ -177,6 +185,14 @@
             border: 1px solid rgba(197, 155, 39, 0.3);
             text-align: center;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-price i {
+            font-size: 0.85rem;
+            color: var(--whatsapp);
         }
 
         .badge-promo {
@@ -309,7 +325,6 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.04);
         }
 
-        /* BOTÓN FLOTANTE WHATSAPP */
         .whatsapp-float {
             position: fixed;
             bottom: 18px;
@@ -353,93 +368,93 @@
             <h2 class="section-title">Catálogo de Pestañas</h2>
             <div class="services-list">
                 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Lifting de Pestañas', '5')">
                     <div class="card-info">
                         <h3>Lifting de Pestañas</h3>
                         <p>Rizado natural y nutrición profunda</p>
                     </div>
-                    <div class="card-price">$5</div>
-                </div>
+                    <div class="card-price">$5 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Pestañas Clásicas', '12')">
                     <div class="card-info">
                         <h3>Pestañas Clásicas</h3>
                         <p>Efecto natural 1 a 1</p>
                     </div>
-                    <div class="card-price">$12</div>
-                </div>
+                    <div class="card-price">$12 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Efecto Rímel', '12')">
                     <div class="card-info">
                         <h3>Efecto Rímel</h3>
                         <p>Mayor definición y volumen suave</p>
                     </div>
-                    <div class="card-price">$12</div>
-                </div>
+                    <div class="card-price">$12 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Híbridas', '15')">
                     <div class="card-info">
                         <h3>Híbridas</h3>
                         <p>Mezcla perfecta de volumen y clásico</p>
                     </div>
-                    <div class="card-price">$15</div>
-                </div>
+                    <div class="card-price">$15 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Hawayanas o YY', '17')">
                     <div class="card-info">
                         <h3>Hawayanas o YY</h3>
                         <p>Textura y densidad moderna</p>
                     </div>
-                    <div class="card-price">$17</div>
-                </div>
+                    <div class="card-price">$17 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Efecto Anime', '18')">
                     <div class="card-info">
                         <h3>Efecto Anime</h3>
                         <p>Picos definidos y mirada expresiva</p>
                     </div>
-                    <div class="card-price">$18</div>
-                </div>
+                    <div class="card-price">$18 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Volumen Griego o 3D', '20')">
                     <div class="card-info">
                         <h3>Volumen Griego o 3D</h3>
                         <p>Efecto denso y uniforme</p>
                     </div>
-                    <div class="card-price">$20</div>
-                </div>
+                    <div class="card-price">$20 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Efecto Foxy', '20')">
                     <div class="card-info">
                         <h3>Efecto Foxy</h3>
                         <p>Ojo rasgado y estilizado</p>
                     </div>
-                    <div class="card-price">$20</div>
-                </div>
+                    <div class="card-price">$20 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Volumen 4D', '20')">
                     <div class="card-info">
                         <h3>Volumen 4D</h3>
                         <p>Volumen intenso y tupido</p>
                     </div>
-                    <div class="card-price">$20</div>
-                </div>
+                    <div class="card-price">$20 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Volumen 5D', '22')">
                     <div class="card-info">
                         <h3>Volumen 5D</h3>
                         <p>Máximo volumen y glamour</p>
                     </div>
-                    <div class="card-price">$22</div>
-                </div>
+                    <div class="card-price">$22 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Punto por Punto', '5')">
                     <div class="card-info">
                         <h3>Punto por Punto</h3>
                         <p>Aplicación tradicional</p>
                     </div>
-                    <div class="card-price">$5</div>
-                </div>
+                    <div class="card-price">$5 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
             </div>
         </section>
@@ -455,9 +470,9 @@
                 <div class="alert-box">
                     <strong><i class="fa-solid fa-circle-exclamation" style="color: var(--rose-accent);"></i> Importante:</strong> Si la caída supera el 50%, aplicará como un juego nuevo.
                 </div>
-                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="agendarServicio('Retoque de Pestañas', '7')">
                     <span style="font-weight: 600; font-size: 0.85rem;">Precio del Retoque (15 días):</span>
-                    <span class="card-price">$7</span>
+                    <span class="card-price">$7 <i class="fa-brands fa-whatsapp"></i></span>
                 </div>
             </div>
         </section>
@@ -467,32 +482,32 @@
             <h2 class="section-title">Diseño & Cejas</h2>
             <div class="services-list">
                 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Diseño y Laminado de Cejas', '5')">
                     <div class="card-info">
                         <span class="badge-promo">Promoción Octubre</span>
                         <h3>Diseño y Laminado de Cejas</h3>
                         <p>Perfilado y peinado semipermanente</p>
                     </div>
-                    <div class="card-price">$5</div>
-                </div>
+                    <div class="card-price">$5 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Pigmentación con Henna', '3')">
                     <div class="card-info">
                         <span class="badge-promo">Promoción Octubre</span>
                         <h3>Pigmentación con Henna</h3>
                         <p>Sombreado natural temporal</p>
                     </div>
-                    <div class="card-price">$3</div>
-                </div>
+                    <div class="card-price">$3 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
-                <div class="card">
+                <a class="card" onclick="agendarServicio('Armonización de Cejas', '8')">
                     <div class="card-info">
                         <span class="badge-promo">Especial</span>
                         <h3>Armonización de Cejas</h3>
                         <p>Incluye aclaración y diseño personalizado</p>
                     </div>
-                    <div class="card-price">$8</div>
-                </div>
+                    <div class="card-price">$8 <i class="fa-brands fa-whatsapp"></i></div>
+                </a>
 
             </div>
         </section>
@@ -532,8 +547,8 @@
             <a href="https://wa.me/593960681450?text=Hola%20Josselyn,%20deseo%20agendar%20una%20cita%20en%20Glamour" target="_blank" class="btn-social">
                 <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp); font-size: 1.1rem;"></i> WhatsApp: 0960681450
             </a>
-            <a href="https://instagram.com/glamour_centro_estetico" target="_blank" class="btn-social">
-                <i class="fa-brands fa-instagram" style="color: #e1306c; font-size: 1.1rem;"></i> @glamour_centro_estético
+            <a href="https://www.instagram.com/glamour_centro_estetico_?stkn=YXlrMW9ma2R4eXJ2" target="_blank" class="btn-social">
+                <i class="fa-brands fa-instagram" style="color: #e1306c; font-size: 1.1rem;"></i> @glamour_centro_estetico_
             </a>
         </div>
 
@@ -559,6 +574,13 @@
                     behavior: 'smooth'
                 });
             }
+        }
+
+        function agendarServicio(nombreServicio, precio) {
+            const numeroTel = "593960681450";
+            const mensaje = `Hola Josselyn, me gustaría agendar una cita para *${nombreServicio}* ($${precio}).`;
+            const url = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
         }
     </script>
 </body>
