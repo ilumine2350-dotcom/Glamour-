@@ -22,6 +22,7 @@
             --text-secondary: #665A55;
             --border-light: #E8DECE;
             --whatsapp: #25d366;
+            --selected-green: #2E7D32;
         }
 
         html, body {
@@ -30,7 +31,7 @@
             background-color: var(--bg-cream);
             color: var(--text-primary);
             line-height: 1.5;
-            padding-bottom: 80px;
+            padding-bottom: 110px;
             font-family: 'Montserrat', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
@@ -129,7 +130,7 @@
             margin: 6px auto 0;
         }
 
-        /* TARJETAS INTERACTIVAS DE SERVICIO */
+        /* TARJETAS SELECCIONABLES DE SERVICIO */
         .services-list {
             display: flex;
             flex-direction: column;
@@ -139,7 +140,7 @@
 
         .card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-light);
+            border: 2px solid var(--border-light);
             border-radius: 14px;
             padding: 16px;
             display: flex;
@@ -147,15 +148,13 @@
             align-items: center;
             width: 100%;
             box-shadow: 0 4px 12px rgba(74, 58, 42, 0.05);
-            text-decoration: none;
-            color: inherit;
             cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            transition: all 0.2s ease;
         }
 
-        .card:active {
-            transform: scale(0.98);
-            box-shadow: 0 2px 6px rgba(74, 58, 42, 0.1);
+        .card.selected {
+            border-color: var(--selected-green);
+            background-color: #F1F8E9;
         }
 
         .card-info {
@@ -176,23 +175,25 @@
         }
 
         .card-price {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--accent-gold);
             background: var(--accent-gold-light);
-            padding: 6px 14px;
-            border-radius: 8px;
+            padding: 8px 14px;
+            border-radius: 20px;
             border: 1px solid rgba(197, 155, 39, 0.3);
             text-align: center;
             white-space: nowrap;
             display: flex;
             align-items: center;
             gap: 6px;
+            transition: all 0.2s ease;
         }
 
-        .card-price i {
-            font-size: 0.85rem;
-            color: var(--whatsapp);
+        .card.selected .card-price {
+            background: var(--selected-green);
+            color: #FFFFFF;
+            border-color: var(--selected-green);
         }
 
         .badge-promo {
@@ -290,6 +291,165 @@
         .policy-list li i { color: var(--rose-accent); }
         .recom-list li i { color: var(--accent-gold); }
 
+        /* BARRA FLOTANTE DE CARRITO */
+        .cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #FFFFFF;
+            border-top: 2px solid var(--accent-gold);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .cart-bar.active {
+            transform: translateY(0);
+        }
+
+        .cart-info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-count {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .btn-cart-confirm {
+            background: var(--whatsapp);
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        /* MODAL DE RESUMEN DE CITA */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #FFFFFF;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px 20px 0 0;
+            padding: 24px 20px;
+            max-height: 85vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 10px;
+        }
+
+        .modal-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-light);
+            font-size: 0.85rem;
+        }
+
+        .input-group {
+            margin-top: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.85rem;
+        }
+
+        .btn-send-whatsapp {
+            width: 100%;
+            background: var(--whatsapp);
+            color: #FFFFFF;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
         /* FOOTER */
         footer {
             text-align: center;
@@ -324,24 +484,6 @@
             border: 1px solid var(--border-light);
             box-shadow: 0 2px 6px rgba(0,0,0,0.04);
         }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 18px;
-            right: 18px;
-            background-color: var(--whatsapp);
-            color: #fff;
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-            z-index: 1000;
-            text-decoration: none;
-        }
     </style>
 </head>
 <body>
@@ -368,93 +510,93 @@
             <h2 class="section-title">Catálogo de Pestañas</h2>
             <div class="services-list">
                 
-                <a class="card" onclick="agendarServicio('Lifting de Pestañas', '5')">
+                <div class="card" onclick="toggleCart('Lifting de Pestañas', 5, this)">
                     <div class="card-info">
                         <h3>Lifting de Pestañas</h3>
                         <p>Rizado natural y nutrición profunda</p>
                     </div>
-                    <div class="card-price">$5 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $5</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Pestañas Clásicas', '12')">
+                <div class="card" onclick="toggleCart('Pestañas Clásicas', 12, this)">
                     <div class="card-info">
                         <h3>Pestañas Clásicas</h3>
                         <p>Efecto natural 1 a 1</p>
                     </div>
-                    <div class="card-price">$12 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $12</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Efecto Rímel', '12')">
+                <div class="card" onclick="toggleCart('Efecto Rímel', 12, this)">
                     <div class="card-info">
                         <h3>Efecto Rímel</h3>
                         <p>Mayor definición y volumen suave</p>
                     </div>
-                    <div class="card-price">$12 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $12</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Híbridas', '15')">
+                <div class="card" onclick="toggleCart('Híbridas', 15, this)">
                     <div class="card-info">
                         <h3>Híbridas</h3>
                         <p>Mezcla perfecta de volumen y clásico</p>
                     </div>
-                    <div class="card-price">$15 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $15</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Hawayanas o YY', '17')">
+                <div class="card" onclick="toggleCart('Hawayanas o YY', 17, this)">
                     <div class="card-info">
                         <h3>Hawayanas o YY</h3>
                         <p>Textura y densidad moderna</p>
                     </div>
-                    <div class="card-price">$17 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $17</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Efecto Anime', '18')">
+                <div class="card" onclick="toggleCart('Efecto Anime', 18, this)">
                     <div class="card-info">
                         <h3>Efecto Anime</h3>
                         <p>Picos definidos y mirada expresiva</p>
                     </div>
-                    <div class="card-price">$18 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $18</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Volumen Griego o 3D', '20')">
+                <div class="card" onclick="toggleCart('Volumen Griego o 3D', 20, this)">
                     <div class="card-info">
                         <h3>Volumen Griego o 3D</h3>
                         <p>Efecto denso y uniforme</p>
                     </div>
-                    <div class="card-price">$20 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $20</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Efecto Foxy', '20')">
+                <div class="card" onclick="toggleCart('Efecto Foxy', 20, this)">
                     <div class="card-info">
                         <h3>Efecto Foxy</h3>
                         <p>Ojo rasgado y estilizado</p>
                     </div>
-                    <div class="card-price">$20 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $20</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Volumen 4D', '20')">
+                <div class="card" onclick="toggleCart('Volumen 4D', 20, this)">
                     <div class="card-info">
                         <h3>Volumen 4D</h3>
                         <p>Volumen intenso y tupido</p>
                     </div>
-                    <div class="card-price">$20 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $20</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Volumen 5D', '22')">
+                <div class="card" onclick="toggleCart('Volumen 5D', 22, this)">
                     <div class="card-info">
                         <h3>Volumen 5D</h3>
                         <p>Máximo volumen y glamour</p>
                     </div>
-                    <div class="card-price">$22 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $22</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Punto por Punto', '5')">
+                <div class="card" onclick="toggleCart('Punto por Punto', 5, this)">
                     <div class="card-info">
                         <h3>Punto por Punto</h3>
                         <p>Aplicación tradicional</p>
                     </div>
-                    <div class="card-price">$5 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $5</span></div>
+                </div>
 
             </div>
         </section>
@@ -470,9 +612,12 @@
                 <div class="alert-box">
                     <strong><i class="fa-solid fa-circle-exclamation" style="color: var(--rose-accent);"></i> Importante:</strong> Si la caída supera el 50%, aplicará como un juego nuevo.
                 </div>
-                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="agendarServicio('Retoque de Pestañas', '7')">
-                    <span style="font-weight: 600; font-size: 0.85rem;">Precio del Retoque (15 días):</span>
-                    <span class="card-price">$7 <i class="fa-brands fa-whatsapp"></i></span>
+                <div class="card" style="margin-top: 15px;" onclick="toggleCart('Retoque de Pestañas', 7, this)">
+                    <div class="card-info">
+                        <h3>Retoque de Pestañas (15 días)</h3>
+                        <p>Mantenimiento y relleno</p>
+                    </div>
+                    <div class="card-price"><span>+ $7</span></div>
                 </div>
             </div>
         </section>
@@ -482,32 +627,32 @@
             <h2 class="section-title">Diseño & Cejas</h2>
             <div class="services-list">
                 
-                <a class="card" onclick="agendarServicio('Diseño y Laminado de Cejas', '5')">
+                <div class="card" onclick="toggleCart('Diseño y Laminado de Cejas', 5, this)">
                     <div class="card-info">
                         <span class="badge-promo">Promoción Octubre</span>
                         <h3>Diseño y Laminado de Cejas</h3>
                         <p>Perfilado y peinado semipermanente</p>
                     </div>
-                    <div class="card-price">$5 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $5</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Pigmentación con Henna', '3')">
+                <div class="card" onclick="toggleCart('Pigmentación con Henna', 3, this)">
                     <div class="card-info">
                         <span class="badge-promo">Promoción Octubre</span>
                         <h3>Pigmentación con Henna</h3>
                         <p>Sombreado natural temporal</p>
                     </div>
-                    <div class="card-price">$3 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $3</span></div>
+                </div>
 
-                <a class="card" onclick="agendarServicio('Armonización de Cejas', '8')">
+                <div class="card" onclick="toggleCart('Armonización de Cejas', 8, this)">
                     <div class="card-info">
                         <span class="badge-promo">Especial</span>
                         <h3>Armonización de Cejas</h3>
                         <p>Incluye aclaración y diseño personalizado</p>
                     </div>
-                    <div class="card-price">$8 <i class="fa-brands fa-whatsapp"></i></div>
-                </a>
+                    <div class="card-price"><span>+ $8</span></div>
+                </div>
 
             </div>
         </section>
@@ -544,7 +689,7 @@
         <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">Atención por Josselyn Martínez</p>
 
         <div class="contact-buttons">
-            <a href="https://wa.me/593960681450?text=Hola%20Josselyn,%20deseo%20agendar%20una%20cita%20en%20Glamour" target="_blank" class="btn-social">
+            <a href="https://wa.me/593960681450?text=Hola%20Josselyn,%20deseo%20consultar%20informaci%C3%B3n" target="_blank" class="btn-social">
                 <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp); font-size: 1.1rem;"></i> WhatsApp: 0960681450
             </a>
             <a href="https://www.instagram.com/glamour_centro_estetico_?stkn=YXlrMW9ma2R4eXJ2" target="_blank" class="btn-social">
@@ -555,12 +700,50 @@
         <p style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 20px;">© Glamour Estética</p>
     </footer>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/593960681450?text=Hola%20Josselyn,%20me%20gustar%C3%ADa%20agendar%20una%20cita" target="_blank" class="whatsapp-float">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- BARRA FLOTANTE DEL CARRITO -->
+    <div class="cart-bar" id="cartBar">
+        <div class="cart-info-text">
+            <span class="cart-count" id="cartCount">0 servicios seleccionados</span>
+            <span class="cart-total" id="cartTotal">$0</span>
+        </div>
+        <button class="btn-cart-confirm" onclick="openModal()">
+            Ver Cita / Agendar <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- MODAL DE RESUMEN DE CITA -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Resumen de tu Cita</h3>
+                <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div id="cartItemsList"></div>
+
+            <div style="margin-top: 15px; text-align: right; font-weight: 700; font-size: 1.1rem; color: var(--text-primary);">
+                Total: <span id="modalTotal">$0</span>
+            </div>
+
+            <div class="input-group">
+                <label>Tu Nombre:</label>
+                <input type="text" id="clientName" placeholder="Ej. María López">
+            </div>
+
+            <div class="input-group">
+                <label>Día y Hora deseada (opcional):</label>
+                <input type="text" id="appointmentDate" placeholder="Ej. Mañana a las 3:00 PM">
+            </div>
+
+            <button class="btn-send-whatsapp" onclick="sendToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Agendar por WhatsApp
+            </button>
+        </div>
+    </div>
 
     <script>
+        let cart = [];
+
         function scrollToId(id) {
             const el = document.getElementById(id);
             if (el) {
@@ -576,10 +759,84 @@
             }
         }
 
-        function agendarServicio(nombreServicio, precio) {
-            const numeroTel = "593960681450";
-            const mensaje = `Hola Josselyn, me gustaría agendar una cita para *${nombreServicio}* ($${precio}).`;
-            const url = `https://wa.me/${numeroTel}?text=${encodeURIComponent(mensaje)}`;
+        function toggleCart(nombre, precio, element) {
+            const index = cart.findIndex(item => item.nombre === nombre);
+            const priceTag = element.querySelector('.card-price span');
+
+            if (index > -1) {
+                cart.splice(index, 1);
+                element.classList.remove('selected');
+                priceTag.innerHTML = `+ $${precio}`;
+            } else {
+                cart.push({ nombre, precio });
+                element.classList.add('selected');
+                priceTag.innerHTML = `<i class="fa-solid fa-check"></i> $${precio}`;
+            }
+
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartBar = document.getElementById('cartBar');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+
+            const total = cart.reduce((sum, item) => sum + item.precio, 0);
+
+            if (cart.length > 0) {
+                cartBar.classList.add('active');
+                cartCount.textContent = `${cart.length} servicio${cart.length > 1 ? 's' : ''} seleccionado${cart.length > 1 ? 's' : ''}`;
+                cartTotal.textContent = `$${total}`;
+            } else {
+                cartBar.classList.remove('active');
+            }
+        }
+
+        function openModal() {
+            const list = document.getElementById('cartItemsList');
+            const modalTotal = document.getElementById('modalTotal');
+            list.innerHTML = '';
+
+            let total = 0;
+            cart.forEach(item => {
+                total += item.precio;
+                list.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.nombre}</span>
+                        <strong>$${item.precio}</strong>
+                    </div>
+                `;
+            });
+
+            modalTotal.textContent = `$${total}`;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        function sendToWhatsApp() {
+            if (cart.length === 0) return;
+
+            const name = document.getElementById('clientName').value.trim() || 'Cliente';
+            const date = document.getElementById('appointmentDate').value.trim() || 'Por definir';
+            const total = cart.reduce((sum, item) => sum + item.precio, 0);
+
+            let msg = `Hola Josselyn, me gustaría agendar una cita.\n\n`;
+            msg += `👤 *Nombre:* ${name}\n`;
+            msg += `📅 *Preferencia:* ${date}\n\n`;
+            msg += `✨ *Servicios seleccionados:*\n`;
+
+            cart.forEach(item => {
+                msg += `• ${item.nombre} ($${item.precio})\n`;
+            });
+
+            msg += `\n💰 *Total estimado:* $${total}\n`;
+            msg += `Quedo a la espera de tu confirmación de disponibilidad.`;
+
+            const phone = "593960681450";
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
             window.open(url, '_blank');
         }
     </script>
